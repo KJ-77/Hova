@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from "./pages/home";
 // import Navbar from "./components/navbar";
 
 
@@ -7,7 +8,7 @@ const App = () => {
     <Router>
         <Routes>
           
-          {/* <Route path="/" element= {<Home />} /> */}
+          <Route path="/" element= {<Home />} />
           {/* <Route path="/*" element={<NotFoundPage />} /> */}
         </Routes>
      
