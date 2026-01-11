@@ -225,7 +225,7 @@ const Home = () => {
             initial={{ opacity: 0, letterSpacing: "0.5em" }}
             animate={{ opacity: 1, letterSpacing: "0.3em" }}
             transition={{ duration: 1.2, delay: 0.3 }}
-            className="text-6xl md:text-8xl font-light text-white mb-4 tracking-[0.3em]"
+            className="text-6xl md:text-8xl font-light text-white mb-4 tracking-[0.3em] -mr-[0.3em]"
           >
             HOVA
           </motion.h1>
@@ -233,7 +233,7 @@ const Home = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.8 }}
-            className="text-hova-gold text-xl md:text-2xl tracking-[0.2em] font-light"
+            className="text-hova-gold text-xl md:text-2xl tracking-[0.2em] -mr-[0.2em] font-light"
           >
             PIECE OF JOY
           </motion.p>
