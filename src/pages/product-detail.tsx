@@ -1,9 +1,15 @@
 import { useParams, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowLeft } from "lucide-react";
+import WhatsAppButton from "@/components/whatsapp-button";
 import product1 from "../assets/Product1.jpg";
+import display1 from "../assets/display1.jpg";
+import display2 from "../assets/display2.jpg";
+import display3 from "../assets/display3.jpg";
+import display4 from "../assets/display4.jpg";
 
 // Product data (will be expanded later - for now just one product)
 const productDetails = {
@@ -11,6 +17,7 @@ const productDetails = {
     id: 1,
     name: "Dark Chocolate Collection",
     image: product1,
+    images: [product1, display1, display2, display3, display4],
     price: 89,
     shortDescription: "Rich, velvety dark chocolate crafted from premium cocoa beans",
     fullDescription:
@@ -46,9 +53,25 @@ const fadeIn = {
 const ProductDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   // Get product details (defaulting to product 1 for now)
   const product = productDetails[id as keyof typeof productDetails] || productDetails["1"];
+
+  // Auto-scroll images every 3 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) =>
+        (prevIndex + 1) % product.images.length
+      );
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [product.images.length]);
+
+  const handleThumbnailClick = (index: number) => {
+    setCurrentImageIndex(index);
+  };
 
   return (
     <div className="min-h-screen bg-hova-black">
@@ -73,17 +96,49 @@ const ProductDetail = () => {
           variants={fadeIn}
           className="grid grid-cols-1 lg:grid-cols-2 gap-12"
         >
-          {/* Product Image */}
-          <motion.div
-            variants={fadeIn}
-            className="relative aspect-square rounded-lg overflow-hidden"
-          >
-            <img
-              src={product.image}
-              alt={product.name}
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-hova-black/50 to-transparent" />
+          {/* Product Image Carousel */}
+          <motion.div variants={fadeIn} className="space-y-4">
+            {/* Main Image */}
+            <div className="relative aspect-square rounded-lg overflow-hidden">
+              <motion.img
+                key={currentImageIndex}
+                src={product.images[currentImageIndex]}
+                alt={`${product.name} - Image ${currentImageIndex + 1}`}
+                className="w-full h-full object-cover"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-hova-black/50 to-transparent" />
+            </div>
+
+            {/* Thumbnail Gallery */}
+            <div className="grid grid-cols-5 gap-2">
+              {product.images.map((image, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleThumbnailClick(index)}
+                  className={`relative aspect-square rounded-lg overflow-hidden transition-all duration-300 ${
+                    currentImageIndex === index
+                      ? "ring-2 ring-hova-gold scale-105"
+                      : "ring-1 ring-hova-gold/20 hover:ring-hova-gold/50"
+                  }`}
+                >
+                  <img
+                    src={image}
+                    alt={`Thumbnail ${index + 1}`}
+                    className="w-full h-full object-cover"
+                  />
+                  <div
+                    className={`absolute inset-0 transition-colors duration-300 ${
+                      currentImageIndex === index
+                        ? "bg-hova-gold/0"
+                        : "bg-black/40 hover:bg-black/20"
+                    }`}
+                  />
+                </button>
+              ))}
+            </div>
           </motion.div>
 
           {/* Product Info */}
@@ -182,6 +237,9 @@ const ProductDetail = () => {
           </motion.div>
         </div>
       </footer>
+
+      {/* WhatsApp Button */}
+      <WhatsAppButton phoneNumber="1234567890" message={`Hello! I'm interested in the ${product.name}.`} />
     </div>
   );
 };

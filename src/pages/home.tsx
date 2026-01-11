@@ -14,6 +14,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import WhatsAppButton from "@/components/whatsapp-button";
 import display1 from "../assets/display1.jpg";
 import display2 from "../assets/display2.jpg";
 import display3 from "../assets/display3.jpg";
@@ -570,6 +571,9 @@ const Home = () => {
           </motion.div>
         </div>
       </footer>
+
+      {/* WhatsApp Button */}
+      <WhatsAppButton />
     </div>
   );
 };
