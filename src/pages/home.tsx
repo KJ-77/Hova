@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import emailjs from "@emailjs/browser";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -20,6 +21,7 @@ import display4 from "../assets/display4.jpg";
 import display5 from "../assets/display5.jpg";
 import display6 from "../assets/display6.jpg";
 import herobg from "../assets/herobg.jpg";
+import product1 from "../assets/Product1.jpg";
 
 // ============================================
 // IMAGE PLACEHOLDERS - Modify paths here
@@ -35,7 +37,7 @@ const IMAGES = {
     display6,
   ],
   products: {
-    darkChocolate: "/images/product-dark.jpg",
+    darkChocolate: product1,
     milkChocolate: "/images/product-milk.jpg",
     whiteChocolate: "/images/product-white.jpg",
     truffles: "/images/product-truffles.jpg",
@@ -148,6 +150,7 @@ const products = [
 ];
 
 const Home = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -358,8 +361,8 @@ const Home = () => {
                 <Card className="bg-hova-black-light border-hova-gold/20 overflow-hidden group hover:border-hova-gold/50 transition-colors duration-300">
                   <div className="relative h-64 overflow-hidden">
                     <div
-                      className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                      style={{ backgroundImage: `url(${product.image})` }}
+                      className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110 z-30"
+                      style={{ backgroundImage: `url(${product.image})`}}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-hova-black-light to-transparent" />
                   </div>
@@ -373,13 +376,16 @@ const Home = () => {
                       {product.description}
                     </p>
                   </CardContent>
-                  <CardFooter className="flex justify-between items-center">
-                    <span className="text-hova-gold text-2xl font-light">
-                      ${product.price}
-                    </span>
+                  <CardFooter className="flex flex-col gap-4">
+                    <div className="flex justify-between items-center w-full">
+                      <span className="text-hova-gold text-2xl font-light">
+                        ${product.price}
+                        {/* <span className="text-hova-muted text-sm">  500g</span> */}
+                      </span>
+                    </div>
                     <Button
-                      variant="outline"
-                      className="border-hova-gold/50 text-hova-gold hover:bg-hova-gold hover:text-hova-black transition-all duration-300"
+                      onClick={() => navigate(`/product/${product.id}`)}
+                      className="w-full bg-hova-gold/10 text-hova-gold border border-hova-gold/30 hover:bg-hova-gold hover:text-hova-black font-medium py-5 tracking-wider transition-all duration-300"
                     >
                       View Details
                     </Button>
