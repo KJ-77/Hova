@@ -5,41 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowLeft } from "lucide-react";
 import WhatsAppButton from "@/components/whatsapp-button";
-import product1 from "../assets/Product1.jpg";
-import display1 from "../assets/display1.jpg";
-import display2 from "../assets/display2.jpg";
-import display3 from "../assets/display3.jpg";
-import display4 from "../assets/display4.jpg";
-
-// Product data (will be expanded later - for now just one product)
-const productDetails = {
-  "1": {
-    id: 1,
-    name: "Dark Chocolate Collection",
-    image: product1,
-    images: [product1, display1, display2, display3, display4],
-    price: 89,
-    shortDescription: "Rich, velvety dark chocolate crafted from premium cocoa beans",
-    fullDescription:
-      "Indulge in our exquisite Dark Chocolate Collection, meticulously crafted from the finest single-origin cocoa beans. Each piece embodies the perfect balance of intense cocoa flavor and subtle sweetness, delivering a sophisticated taste experience that lingers on the palate. Our master chocolatiers have perfected this blend to create a luxurious chocolate that appeals to the most discerning connoisseurs.",
-    specifications: [
-      { label: "Weight", value: "500g" },
-      { label: "Pieces per Box", value: "24 pieces" },
-      { label: "Cocoa Content", value: "70%" },
-      { label: "Origin", value: "Ecuador" },
-      { label: "Shelf Life", value: "12 months" },
-      { label: "Storage", value: "Cool, dry place (15-18°C)" },
-    ],
-    features: [
-      "100% natural ingredients",
-      "No artificial preservatives",
-      "Gluten-free",
-      "Suitable for vegetarians",
-      "Premium gift packaging included",
-      "Handcrafted by master chocolatiers",
-    ],
-  },
-};
+import { getProductById } from "@/data/products";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -55,8 +21,14 @@ const ProductDetail = () => {
   const navigate = useNavigate();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  // Get product details (defaulting to product 1 for now)
-  const product = productDetails[id as keyof typeof productDetails] || productDetails["1"];
+  // Get product details
+  const product = getProductById(id || "1");
+
+  // Redirect to home if product not found
+  if (!product) {
+    navigate("/");
+    return null;
+  }
 
   // Auto-scroll images every 3 seconds
   useEffect(() => {
@@ -71,6 +43,14 @@ const ProductDetail = () => {
 
   const handleThumbnailClick = (index: number) => {
     setCurrentImageIndex(index);
+  };
+
+  const handleInquireNow = () => {
+    const phoneNumber = "79088963"; // Same number as WhatsApp button
+    const message = `Hello! I'm interested in the ${product.name}. Could you provide more information?`;
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    window.open(whatsappUrl, "_blank");
   };
 
   return (
@@ -177,10 +157,7 @@ const ProductDetail = () => {
 
             {/* Contact Button */}
             <Button
-              onClick={() => {
-                document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-                navigate("/#contact");
-              }}
+              onClick={handleInquireNow}
               className="w-full bg-hova-gold text-hova-black hover:bg-hova-gold-dark font-medium py-6 text-lg tracking-wider transition-all duration-300"
             >
               Inquire Now

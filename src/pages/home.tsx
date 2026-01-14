@@ -15,6 +15,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import WhatsAppButton from "@/components/whatsapp-button";
+import { products } from "@/data/products";
 import display1 from "../assets/display1.jpg";
 import display2 from "../assets/display2.jpg";
 import display3 from "../assets/display3.jpg";
@@ -22,7 +23,6 @@ import display4 from "../assets/display4.jpg";
 import display5 from "../assets/display5.jpg";
 import display6 from "../assets/display6.jpg";
 import herobg from "../assets/herobg.jpg";
-import product1 from "../assets/Product1.jpg";
 
 // ============================================
 // IMAGE PLACEHOLDERS - Modify paths here
@@ -37,14 +37,6 @@ const IMAGES = {
     display5,
     display6,
   ],
-  products: {
-    darkChocolate: product1,
-    milkChocolate: "/images/product-milk.jpg",
-    whiteChocolate: "/images/product-white.jpg",
-    truffles: "/images/product-truffles.jpg",
-    assorted: "/images/product-assorted.jpg",
-    premium: "/images/product-premium.jpg",
-  },
 };
 
 // ============================================
@@ -103,52 +95,6 @@ const AnimatedSection = ({ children, className = "" }: { children: React.ReactNo
     </motion.div>
   );
 };
-
-// Product data
-const products = [
-  {
-    id: 1,
-    name: "Dark Chocolate Collection",
-    description: "Rich, velvety dark chocolate crafted from premium cocoa beans",
-    price: 89,
-    image: IMAGES.products.darkChocolate,
-  },
-  {
-    id: 2,
-    name: "Milk Chocolate Delights",
-    description: "Smooth, creamy milk chocolate with a perfect balance of sweetness",
-    price: 79,
-    image: IMAGES.products.milkChocolate,
-  },
-  {
-    id: 3,
-    name: "White Chocolate Dreams",
-    description: "Luxurious white chocolate with hints of vanilla",
-    price: 85,
-    image: IMAGES.products.whiteChocolate,
-  },
-  {
-    id: 4,
-    name: "Truffle Selection",
-    description: "Handcrafted truffles with exotic flavor combinations",
-    price: 120,
-    image: IMAGES.products.truffles,
-  },
-  {
-    id: 5,
-    name: "Assorted Gift Box",
-    description: "A curated selection of our finest chocolates",
-    price: 150,
-    image: IMAGES.products.assorted,
-  },
-  {
-    id: 6,
-    name: "Premium Reserve",
-    description: "Our most exclusive collection for the discerning palate",
-    price: 250,
-    image: IMAGES.products.premium,
-  },
-];
 
 const Home = () => {
   const navigate = useNavigate();
@@ -374,7 +320,7 @@ const Home = () => {
                   </CardHeader>
                   <CardContent>
                     <p className="text-hova-muted text-sm">
-                      {product.description}
+                      {product.shortDescription}
                     </p>
                   </CardContent>
                   <CardFooter className="flex flex-col gap-4">
