@@ -380,12 +380,17 @@ const Home = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Map Placeholder */}
             <AnimatedSection>
-              <div className="w-full h-[400px] bg-hova-black border border-hova-gold/20 rounded-lg flex items-center justify-center">
-                {/* Replace this div with Google Maps iframe */}
-                <p className="text-hova-muted text-center">
-                  Google Maps Embed<br />
-                  <span className="text-sm">(Add iframe here)</span>
-                </p>
+              <div className="w-full h-[400px] bg-hova-black border border-hova-gold/20 rounded-lg overflow-hidden">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d33016.655458463276!2d35.48368274137904!3d33.88925221106324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151f17215880a78f%3A0x729182bae99836b4!2sBeirut!5e1!3m2!1sen!2slb!4v1770933084962!5m2!1sen!2slb"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Beirut Location"
+                />
               </div>
             </AnimatedSection>
 
