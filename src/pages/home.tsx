@@ -329,7 +329,7 @@ const Home = () => {
             {products.map((product) => (
               <motion.div key={product.id} variants={fadeInUp} className="h-full">
                 <Card className="bg-hova-black-light border-hova-gold/20 overflow-hidden group hover:border-hova-gold/50 transition-colors duration-300 h-full">
-                  <div className="relative h-64 overflow-hidden -mt-6">
+                  <div className="relative h-80 overflow-hidden -mt-6">
                     <div
                       className="w-full h-full bg-cover bg-top transition-transform duration-700 group-hover:scale-110 z-30"
                       style={{ backgroundImage: `url(${product.image})`}}
