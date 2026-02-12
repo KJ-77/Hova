@@ -14,6 +14,44 @@ import product1_6 from "../assets/Classic/sixth.jpeg";
 import product1_7 from "../assets/Classic/seventh.jpeg";
 import product1_8 from "../assets/Classic/eighth.jpeg";
 
+//===========================================================================
+
+import product2_1 from "../assets/Pink1/first.jpg";
+import product2_2 from "../assets/Pink1/second.jpg";
+import product2_3 from "../assets/Pink1/third.mp4";
+import product2_4 from "../assets/Pink1/fourth.png";
+import product2_5 from "../assets/Pink1/fifth.png";
+import product2_6 from "../assets/Pink1/sixth.png";
+
+//===========================================================================
+
+import product3_1 from "../assets/CrispyCheese/first.png";
+import product3_2 from "../assets/CrispyCheese/second.jpg";
+import product3_3 from "../assets/CrispyCheese/third.jpg";
+import product3_4 from "../assets/CrispyCheese/fourth.png";
+import product3_5 from "../assets/CrispyCheese/fifth.png";
+import product3_6 from "../assets/CrispyCheese/movie.mp4";
+
+//===========================================================================
+
+import product4_1 from "../assets/Pistachio/first.jpeg";
+import product4_2 from "../assets/Pistachio/second.jpeg";
+import product4_3 from "../assets/Pistachio/third.jpeg";
+import product4_4 from "../assets/Pistachio/fourth.jpeg";
+
+//===========================================================================
+
+import product5_1 from "../assets/Pink2/first.jpeg";
+import product5_2 from "../assets/Pink2/second.jpeg";
+import product5_3 from "../assets/Pink2/third.jpeg";
+
+//===========================================================================
+
+import product6_1 from "../assets/RedBox/first.jpeg";
+import product6_2 from "../assets/RedBox/second.png";
+import product6_3 from "../assets/RedBox/third.jpeg";
+import product6_4 from "../assets/RedBox/fourth.jpeg";
+
 // Product interface
 export interface Product {
   id: number;
@@ -63,144 +101,144 @@ export const products: Product[] = [
   },
 
   // ===== PRODUCT 2: Milk Chocolate Delights =====
-  // {
-  //   id: 2,
-  //   name: "Milk Chocolate Delights",
-  //   image: display2, // TODO: Replace with actual product image
-  //   images: [display2, display1, display3, display4, display5],
-  //   price: 79,
-  //   shortDescription: "Smooth, creamy milk chocolate with a perfect balance of sweetness",
-  //   fullDescription:
-  //     "Experience the perfect harmony of smooth, creamy milk chocolate in our Milk Chocolate Delights collection. Made with the finest milk and cocoa, each piece melts luxuriously on your tongue, releasing layers of rich, sweet flavor. This collection represents the pinnacle of traditional chocolate-making, combining time-honored techniques with modern precision.",
-  //   specifications: [
-  //     { label: "Weight", value: "450g" },
-  //     { label: "Pieces per Box", value: "20 pieces" },
-  //     { label: "Cocoa Content", value: "35%" },
-  //     { label: "Origin", value: "Belgium" },
-  //     { label: "Shelf Life", value: "10 months" },
-  //     { label: "Storage", value: "Cool, dry place (15-18°C)" },
-  //   ],
-  //   features: [
-  //     "Premium Belgian chocolate",
-  //     "Smooth, creamy texture",
-  //     "No artificial flavors",
-  //     "Perfect for gifting",
-  //     "Elegant packaging",
-  //     "Suitable for all ages",
-  //   ],
-  // },
+  {
+    id: 2,
+    name: "Caramel Pecan from HOVA",
+    image: product2_1,
+    images: [product2_1, product2_2, product2_3, product2_4, product2_5, product2_6],
+    price: 79,
+    shortDescription: "A smooth caramel center engulfed in authentic Belgian chocolate, finished with roasted pecans.",
+    fullDescription:
+      "Sweet caramel, rich Belgian chocolate, and lightly salted pecans are layered in a perfect harmony.",
+    specifications: [
+      { label: "Weight", value: "450g" },
+      { label: "Pieces per Box", value: "20 pieces" },
+      { label: "Cocoa Content", value: "35%" },
+      { label: "Origin", value: "Belgium" },
+      { label: "Shelf Life", value: "10 months" },
+      { label: "Storage", value: "Cool, dry place (15-18°C)" },
+    ],
+    features: [
+      "Premium Belgian chocolate",
+      "Smooth, creamy texture",
+      "No artificial flavors",
+      "Perfect for gifting",
+      "Elegant packaging",
+      "Suitable for all ages",
+    ],
+  },
 
-  // // ===== PRODUCT 3: White Chocolate Dreams =====
-  // {
-  //   id: 3,
-  //   name: "White Chocolate Dreams",
-  //   image: display3, // TODO: Replace with actual product image
-  //   images: [display3, display1, display2, display4, display6],
-  //   price: 85,
-  //   shortDescription: "Luxurious white chocolate with hints of vanilla",
-  //   fullDescription:
-  //     "Dive into the creamy indulgence of our White Chocolate Dreams collection. Made from the purest cocoa butter and enhanced with Madagascar vanilla, these delicate pieces offer a sublime sweetness that enchants the senses. Each chocolate is a testament to the art of balancing richness with refinement, creating an unforgettable taste experience.",
-  //   specifications: [
-  //     { label: "Weight", value: "400g" },
-  //     { label: "Pieces per Box", value: "18 pieces" },
-  //     { label: "Cocoa Butter Content", value: "33%" },
-  //     { label: "Origin", value: "Switzerland" },
-  //     { label: "Shelf Life", value: "8 months" },
-  //     { label: "Storage", value: "Cool, dry place (15-18°C)" },
-  //   ],
-  //   features: [
-  //     "Pure cocoa butter",
-  //     "Madagascar vanilla beans",
-  //     "Delicate, smooth texture",
-  //     "Premium Swiss quality",
-  //     "Beautiful presentation",
-  //     "Perfect for special occasions",
-  //   ],
-  // },
+  // ===== PRODUCT 3: White Chocolate Dreams =====
+  {
+    id: 3,
+    name: "Crispy Cheese from HOVA",
+    image: product3_1,
+    images: [product3_1, product3_2, product3_3, product3_4, product3_5, product3_6],
+    price: 85,
+    shortDescription: "A refined combination of a smooth mascarpone filling wrapped in a light, crispy exterior.",
+    fullDescription:
+      "Each piece is carefully crafted to deliver a perfect balance between creamy richness and delicate crunch.",
+    specifications: [
+      { label: "Weight", value: "400g" },
+      { label: "Pieces per Box", value: "18 pieces" },
+      { label: "Cocoa Butter Content", value: "33%" },
+      { label: "Origin", value: "Switzerland" },
+      { label: "Shelf Life", value: "8 months" },
+      { label: "Storage", value: "Cool, dry place (15-18°C)" },
+    ],
+    features: [
+      "Pure cocoa butter",
+      "Madagascar vanilla beans",
+      "Delicate, smooth texture",
+      "Premium Swiss quality",
+      "Beautiful presentation",
+      "Perfect for special occasions",
+    ],
+  },
 
-  // // ===== PRODUCT 4: Truffle Selection =====
-  // {
-  //   id: 4,
-  //   name: "Truffle Selection",
-  //   image: display4, // TODO: Replace with actual product image
-  //   images: [display4, display1, display2, display3, display5],
-  //   price: 120,
-  //   shortDescription: "Handcrafted truffles with exotic flavor combinations",
-  //   fullDescription:
-  //     "Discover our exquisite Truffle Selection, where artistry meets flavor in perfect harmony. Each truffle is handcrafted by our master chocolatiers, featuring innovative combinations of premium chocolate with exotic ingredients like passion fruit, champagne, and rare spices. These luxurious confections are designed to surprise and delight even the most sophisticated palates.",
-  //   specifications: [
-  //     { label: "Weight", value: "350g" },
-  //     { label: "Pieces per Box", value: "16 truffles" },
-  //     { label: "Cocoa Content", value: "60-70%" },
-  //     { label: "Origin", value: "France" },
-  //     { label: "Shelf Life", value: "6 months" },
-  //     { label: "Storage", value: "Refrigerate (4-8°C)" },
-  //   ],
-  //   features: [
-  //     "Handrolled truffles",
-  //     "Exotic flavor combinations",
-  //     "French craftsmanship",
-  //     "Limited availability",
-  //     "Luxury gift box",
-  //     "Fresh ingredients only",
-  //   ],
-  // },
+  // ===== PRODUCT 4: Truffle Selection =====
+  {
+    id: 4,
+    name: "Pistachio Cream from HOVA",
+    image: product4_1,
+    images: [product4_1, product4_2, product4_3, product4_4],
+    price: 120,
+    shortDescription: "Savor the rich crunch of premium pistachios enveloped in silk-smooth, creamy artisanal chocolate.",
+    fullDescription:
+      "This elegantly boxed collection is the ultimate masterclass in buttery, nutty decadence.",
+    specifications: [
+      { label: "Weight", value: "350g" },
+      { label: "Pieces per Box", value: "16 truffles" },
+      { label: "Cocoa Content", value: "60-70%" },
+      { label: "Origin", value: "France" },
+      { label: "Shelf Life", value: "6 months" },
+      { label: "Storage", value: "Refrigerate (4-8°C)" },
+    ],
+    features: [
+      "Handrolled truffles",
+      "Exotic flavor combinations",
+      "French craftsmanship",
+      "Limited availability",
+      "Luxury gift box",
+      "Fresh ingredients only",
+    ],
+  },
 
-  // // ===== PRODUCT 5: Assorted Gift Box =====
-  // {
-  //   id: 5,
-  //   name: "Assorted Gift Box",
-  //   image: display5, // TODO: Replace with actual product image
-  //   images: [display5, display1, display2, display3, display6],
-  //   price: 150,
-  //   shortDescription: "A curated selection of our finest chocolates",
-  //   fullDescription:
-  //     "Our Assorted Gift Box is the perfect way to experience the full spectrum of HOVA's chocolate mastery. This carefully curated collection features a selection of our most beloved pieces, from rich dark chocolate to creamy milk chocolate and delicate white chocolate. Each box tells a story of craftsmanship, quality, and passion for the finest chocolate.",
-  //   specifications: [
-  //     { label: "Weight", value: "750g" },
-  //     { label: "Pieces per Box", value: "36 pieces" },
-  //     { label: "Variety", value: "Dark, Milk, White" },
-  //     { label: "Origin", value: "Multi-origin" },
-  //     { label: "Shelf Life", value: "12 months" },
-  //     { label: "Storage", value: "Cool, dry place (15-18°C)" },
-  //   ],
-  //   features: [
-  //     "Three chocolate varieties",
-  //     "Perfect for sharing",
-  //     "Premium gift packaging",
-  //     "Includes flavor guide",
-  //     "Suitable for all preferences",
-  //     "Best seller collection",
-  //   ],
-  // },
+  // ===== PRODUCT 5: Assorted Gift Box =====
+  {
+    id: 5,
+    name: "Caramel Pecan from HOVA",
+    image: product5_1,
+    images: [product5_1, product5_2, product5_3],
+    price: 150,
+    shortDescription: "Experience the buttery snap of toasted pecans and salted caramel croquant, perfectly balanced within smooth, premium chocolate. ",
+    fullDescription:
+      "Presented in our iconic pink box, it’s a chic, textured indulgence that tastes even better than it looks.",
+    specifications: [
+      { label: "Weight", value: "750g" },
+      { label: "Pieces per Box", value: "36 pieces" },
+      { label: "Variety", value: "Dark, Milk, White" },
+      { label: "Origin", value: "Multi-origin" },
+      { label: "Shelf Life", value: "12 months" },
+      { label: "Storage", value: "Cool, dry place (15-18°C)" },
+    ],
+    features: [
+      "Three chocolate varieties",
+      "Perfect for sharing",
+      "Premium gift packaging",
+      "Includes flavor guide",
+      "Suitable for all preferences",
+      "Best seller collection",
+    ],
+  },
 
-  // // ===== PRODUCT 6: Premium Reserve =====
-  // {
-  //   id: 6,
-  //   name: "Premium Reserve",
-  //   image: display6, // TODO: Replace with actual product image
-  //   images: [display6, display1, display2, display4, display5],
-  //   price: 250,
-  //   shortDescription: "Our most exclusive collection for the discerning palate",
-  //   fullDescription:
-  //     "The Premium Reserve represents the absolute pinnacle of chocolate excellence. This exclusive collection features rare single-origin cocoa from the world's most prestigious plantations, combined with the finest ingredients sourced globally. Each piece is a masterpiece, created in limited quantities to ensure uncompromising quality. Reserved for true connoisseurs, this collection embodies luxury in every bite.",
-  //   specifications: [
-  //     { label: "Weight", value: "600g" },
-  //     { label: "Pieces per Box", value: "20 pieces" },
-  //     { label: "Cocoa Content", value: "75-85%" },
-  //     { label: "Origin", value: "Single-origin selection" },
-  //     { label: "Shelf Life", value: "18 months" },
-  //     { label: "Storage", value: "Cool, dry place (15-18°C)" },
-  //   ],
-  //   features: [
-  //     "Single-origin rare cocoa",
-  //     "Limited production",
-  //     "Numbered certificate of authenticity",
-  //     "Luxury wooden box",
-  //     "Collector's item",
-  //     "Ultimate gift for connoisseurs",
-  //   ],
-  // },
+  // ===== PRODUCT 6: Premium Reserve =====
+  {
+    id: 6,
+    name: "Wafers from HOVA",
+    image: product6_1,
+    images: [product6_1, product6_2, product6_3, product6_4],
+    price: 250,
+    shortDescription: "Wrapped in a striking crimson case, these artisanal wafers feature delicate, airy layers enveloped in smooth, high-end chocolate.",
+    fullDescription:
+      "It is a masterclass in texture, offering a refined snap that feels every bit as luxurious as its elegant presentation.",
+    specifications: [
+      { label: "Weight", value: "600g" },
+      { label: "Pieces per Box", value: "20 pieces" },
+      { label: "Cocoa Content", value: "75-85%" },
+      { label: "Origin", value: "Single-origin selection" },
+      { label: "Shelf Life", value: "18 months" },
+      { label: "Storage", value: "Cool, dry place (15-18°C)" },
+    ],
+    features: [
+      "Single-origin rare cocoa",
+      "Limited production",
+      "Numbered certificate of authenticity",
+      "Luxury wooden box",
+      "Collector's item",
+      "Ultimate gift for connoisseurs",
+    ],
+  },
 ];
 
 // Helper function to get product by ID
