@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import emailjs from "@emailjs/browser";
@@ -93,6 +93,29 @@ const AnimatedSection = ({ children, className = "" }: { children: React.ReactNo
     >
       {children}
     </motion.div>
+  );
+};
+
+const TruncatedText = ({ text }: { text: string }) => {
+  const textRef = useRef<HTMLParagraphElement>(null);
+  const [isTruncated, setIsTruncated] = useState(false);
+
+  useEffect(() => {
+    const el = textRef.current;
+    if (el) {
+      setIsTruncated(el.scrollHeight > el.clientHeight);
+    }
+  }, [text]);
+
+  return (
+    <div className="relative">
+      <p ref={textRef} className="text-hova-muted text-sm overflow-hidden max-h-[3.75rem]">
+        {text}
+      </p>
+      {isTruncated && (
+        <div className="absolute bottom-0 right-0 h-5 w-2/5 bg-gradient-to-r from-transparent to-hova-black-light pointer-events-none" />
+      )}
+    </div>
   );
 };
 
@@ -304,11 +327,11 @@ const Home = () => {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
             {products.map((product) => (
-              <motion.div key={product.id} variants={fadeInUp}>
-                <Card className="bg-hova-black-light border-hova-gold/20 overflow-hidden group hover:border-hova-gold/50 transition-colors duration-300">
-                  <div className="relative h-64 overflow-hidden">
+              <motion.div key={product.id} variants={fadeInUp} className="h-full">
+                <Card className="bg-hova-black-light border-hova-gold/20 overflow-hidden group hover:border-hova-gold/50 transition-colors duration-300 h-full">
+                  <div className="relative h-64 overflow-hidden -mt-6">
                     <div
-                      className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110 z-30"
+                      className="w-full h-full bg-cover bg-top transition-transform duration-700 group-hover:scale-110 z-30"
                       style={{ backgroundImage: `url(${product.image})`}}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-hova-black-light to-transparent" />
@@ -319,11 +342,9 @@ const Home = () => {
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-hova-muted text-sm">
-                      {product.shortDescription}
-                    </p>
+                    <TruncatedText text={product.shortDescription} />
                   </CardContent>
-                  <CardFooter className="flex flex-col gap-4">
+                  <CardFooter className="flex flex-col gap-4 mt-auto">
                     <div className="flex justify-between items-center w-full">
                       <span className="text-hova-gold text-2xl font-light">
                         ${product.price}

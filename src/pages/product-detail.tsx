@@ -21,6 +21,7 @@ const ProductDetail = () => {
   const navigate = useNavigate();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [thumbStartIndex, setThumbStartIndex] = useState(0);
+  const [autoScrollKey, setAutoScrollKey] = useState(0);
   const maxVisibleThumbs = 5;
 
   // Get product details
@@ -32,7 +33,7 @@ const ProductDetail = () => {
     return null;
   }
 
-  // Auto-scroll images every 3 seconds
+  // Auto-scroll images every 3 seconds, resets when user clicks a thumbnail
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) =>
@@ -41,10 +42,23 @@ const ProductDetail = () => {
     }, 3000);
 
     return () => clearInterval(interval);
-  }, [product.images.length]);
+  }, [product.images.length, autoScrollKey]);
+
+  // Keep thumbnail carousel in sync with current image
+  useEffect(() => {
+    if (currentImageIndex < thumbStartIndex) {
+      setThumbStartIndex(currentImageIndex);
+    } else if (currentImageIndex >= thumbStartIndex + maxVisibleThumbs) {
+      setThumbStartIndex(Math.min(
+        currentImageIndex - maxVisibleThumbs + 1,
+        product.images.length - maxVisibleThumbs
+      ));
+    }
+  }, [currentImageIndex, thumbStartIndex, product.images.length]);
 
   const handleThumbnailClick = (index: number) => {
     setCurrentImageIndex(index);
+    setAutoScrollKey((prev) => prev + 1);
   };
 
   const handleInquireNow = () => {
