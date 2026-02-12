@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
 import WhatsAppButton from "@/components/whatsapp-button";
 import { getProductById } from "@/data/products";
 
@@ -20,6 +20,8 @@ const ProductDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [thumbStartIndex, setThumbStartIndex] = useState(0);
+  const maxVisibleThumbs = 5;
 
   // Get product details
   const product = getProductById(id || "1");
@@ -92,32 +94,61 @@ const ProductDetail = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-hova-black/50 to-transparent" />
             </div>
 
-            {/* Thumbnail Gallery */}
-            <div className="grid grid-cols-5 gap-2">
-              {product.images.map((image, index) => (
+            {/* Thumbnail Gallery Carousel */}
+            <div className="flex items-center gap-2">
+              {product.images.length > maxVisibleThumbs && (
                 <button
-                  key={index}
-                  onClick={() => handleThumbnailClick(index)}
-                  className={`relative aspect-square rounded-lg overflow-hidden transition-all duration-300 ${
-                    currentImageIndex === index
-                      ? "ring-2 ring-hova-gold scale-105"
-                      : "ring-1 ring-hova-gold/20 hover:ring-hova-gold/50"
-                  }`}
+                  onClick={() => setThumbStartIndex((prev) => Math.max(0, prev - 1))}
+                  disabled={thumbStartIndex === 0}
+                  className="shrink-0 p-1 text-hova-gold disabled:text-hova-gold/20 hover:text-hova-gold/80 transition-colors"
                 >
-                  <img
-                    src={image}
-                    alt={`Thumbnail ${index + 1}`}
-                    className="w-full h-full object-cover"
-                  />
-                  <div
-                    className={`absolute inset-0 transition-colors duration-300 ${
-                      currentImageIndex === index
-                        ? "bg-hova-gold/0"
-                        : "bg-black/40 hover:bg-black/20"
-                    }`}
-                  />
+                  <ChevronLeft className="h-5 w-5" />
                 </button>
-              ))}
+              )}
+              <div className="grid grid-cols-5 gap-2 flex-1">
+                {product.images
+                  .slice(thumbStartIndex, thumbStartIndex + maxVisibleThumbs)
+                  .map((image, i) => {
+                    const index = thumbStartIndex + i;
+                    return (
+                      <button
+                        key={index}
+                        onClick={() => handleThumbnailClick(index)}
+                        className={`relative aspect-square rounded-lg overflow-hidden transition-all duration-300 ${
+                          currentImageIndex === index
+                            ? "ring-2 ring-hova-gold scale-105"
+                            : "ring-1 ring-hova-gold/20 hover:ring-hova-gold/50"
+                        }`}
+                      >
+                        <img
+                          src={image}
+                          alt={`Thumbnail ${index + 1}`}
+                          className="w-full h-full object-cover"
+                        />
+                        <div
+                          className={`absolute inset-0 transition-colors duration-300 ${
+                            currentImageIndex === index
+                              ? "bg-hova-gold/0"
+                              : "bg-black/40 hover:bg-black/20"
+                          }`}
+                        />
+                      </button>
+                    );
+                  })}
+              </div>
+              {product.images.length > maxVisibleThumbs && (
+                <button
+                  onClick={() =>
+                    setThumbStartIndex((prev) =>
+                      Math.min(product.images.length - maxVisibleThumbs, prev + 1)
+                    )
+                  }
+                  disabled={thumbStartIndex >= product.images.length - maxVisibleThumbs}
+                  className="shrink-0 p-1 text-hova-gold disabled:text-hova-gold/20 hover:text-hova-gold/80 transition-colors"
+                >
+                  <ChevronRight className="h-5 w-5" />
+                </button>
+              )}
             </div>
           </motion.div>
 
@@ -176,7 +207,7 @@ const ProductDetail = () => {
           <h2 className="text-hova-gold text-sm tracking-[0.3em] mb-6">
             ABOUT THIS PRODUCT
           </h2>
-          <p className="text-white text-lg leading-relaxed mb-12">
+          <p className="text-white text-lg leading-relaxed mb-12 whitespace-pre-line">
             {product.fullDescription}
           </p>
 
