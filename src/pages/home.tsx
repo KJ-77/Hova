@@ -352,7 +352,7 @@ const Home = () => {
                       </span>
                     </div>
                     <Button
-                      onClick={() => navigate(`/product/${product.id}`)}
+                      onClick={() => navigate(`/product/${product.slug}`)}
                       className="w-full bg-hova-gold/10 text-hova-gold border border-hova-gold/30 hover:bg-hova-gold hover:text-hova-black font-medium py-5 tracking-wider transition-all duration-300"
                     >
                       View Details

@@ -1,22 +1,19 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Analytics } from "@vercel/analytics/react";
 import Home from "./pages/home";
 import ProductDetail from "./pages/product-detail";
 import ScrollToTop from "./components/scroll-to-top";
-// import Navbar from "./components/navbar";
-
 
 const App = () => {
   return (
     <Router>
         <ScrollToTop />
         <Routes>
-
-          <Route path="/" element= {<Home />} />
-          <Route path="/product/:id" element={<ProductDetail />} />
-          {/* <Route path="/*" element={<NotFoundPage />} /> */}
+          <Route path="/" element={<Home />} />
+          <Route path="/product/:slug" element={<ProductDetail />} />
         </Routes>
-
-      </Router>
+        <Analytics />
+    </Router>
   );
 };
 

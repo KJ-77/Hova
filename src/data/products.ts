@@ -55,6 +55,7 @@ import product6_4 from "../assets/RedBox/fourth.jpeg";
 // Product interface
 export interface Product {
   id: number;
+  slug: string;
   name: string;
   image: string; // Main image used on home page
   images: string[]; // Gallery images for product detail page
@@ -75,6 +76,7 @@ export const products: Product[] = [
   // ===== PRODUCT 1: Dark Chocolate Collection =====
   {
     id: 1,
+    slug: "classic-box",
     name: "The Classic Box from HOVA",
     image: product1_1,
     images: [product1_1, product1_2, product1_3, product1_4, product1_5, product1_6, product1_7, product1_8],
@@ -85,9 +87,9 @@ export const products: Product[] = [
     specifications: [
       { label: "Weight", value: "500g" },
       { label: "Pieces per Box", value: "35 pieces" },
-      { label: "Cocoa Content", value: "70%" },
+      { label: "Delivery Time", value: "1-2 Days" },
       { label: "Origin", value: "Belgium" },
-      { label: "Shelf Life", value: "12 months" },
+      { label: "Delivery Charge", value: "Free Delivery" },
       { label: "Storage", value: "Cool, dry place (15-18°C)" },
     ],
     features: [
@@ -103,6 +105,7 @@ export const products: Product[] = [
   // ===== PRODUCT 2: Milk Chocolate Delights =====
   {
     id: 2,
+    slug: "caramel-pecan",
     name: "Caramel Pecan from HOVA",
     image: product2_1,
     images: [product2_1, product2_2, product2_3, product2_4, product2_5, product2_6],
@@ -113,9 +116,9 @@ export const products: Product[] = [
     specifications: [
       { label: "Weight", value: "450g" },
       { label: "Pieces per Box", value: "20 pieces" },
-      { label: "Cocoa Content", value: "35%" },
+      { label: "Delivery Time", value: "1-2 Days" },
       { label: "Origin", value: "Belgium" },
-      { label: "Shelf Life", value: "10 months" },
+      { label: "Delivery Charge", value: "Free Delivery" },
       { label: "Storage", value: "Cool, dry place (15-18°C)" },
     ],
     features: [
@@ -131,6 +134,7 @@ export const products: Product[] = [
   // ===== PRODUCT 3: White Chocolate Dreams =====
   {
     id: 3,
+    slug: "crispy-cheese",
     name: "Crispy Cheese from HOVA",
     image: product3_1,
     images: [product3_1, product3_2, product3_3, product3_4, product3_5, product3_6],
@@ -141,9 +145,9 @@ export const products: Product[] = [
     specifications: [
       { label: "Weight", value: "400g" },
       { label: "Pieces per Box", value: "14 pieces" },
-      { label: "Cocoa Butter Content", value: "33%" },
+      { label: "Delivery Time", value: "1-2 Days" },
       { label: "Origin", value: "Belgium" },
-      { label: "Shelf Life", value: "8 months" },
+      { label: "Delivery Charge", value: "Free Delivery" },
       { label: "Storage", value: "Cool, dry place (15-18°C)" },
     ],
     features: [
@@ -159,6 +163,7 @@ export const products: Product[] = [
   // ===== PRODUCT 4: Truffle Selection =====
   {
     id: 4,
+    slug: "pistachio-cream",
     name: "Pistachio Cream from HOVA",
     image: product4_1,
     images: [product4_1, product4_2, product4_3, product4_4],
@@ -169,9 +174,9 @@ export const products: Product[] = [
     specifications: [
       { label: "Weight", value: "350g" },
       { label: "Pieces per Box", value: "16 pistachios" },
-      { label: "Cocoa Content", value: "60-70%" },
+      { label: "Delivery Time", value: "1-2 Days" },
       { label: "Origin", value: "Belgium" },
-      { label: "Shelf Life", value: "6 months" },
+      { label: "Delivery Charge", value: "Free Delivery" },
       { label: "Storage", value: "Refrigerate (4-8°C)" },
     ],
     features: [
@@ -187,6 +192,7 @@ export const products: Product[] = [
   // ===== PRODUCT 5: Assorted Gift Box =====
   {
     id: 5,
+    slug: "caramel-pecan-pink",
     name: "Caramel Pecan from HOVA",
     image: product5_1,
     images: [product5_1, product5_2, product5_3],
@@ -197,9 +203,9 @@ export const products: Product[] = [
     specifications: [
       { label: "Weight", value: "750g" },
       { label: "Pieces per Box", value: "15 pieces" },
-      { label: "Variety", value: "Dark, Milk, White" },
+      { label: "Delivery Time", value: "1-2 Days" },
       { label: "Origin", value: "Belgium" },
-      { label: "Shelf Life", value: "12 months" },
+      { label: "Delivery Charge", value: "Free Delivery" },
       { label: "Storage", value: "Cool, dry place (15-18°C)" },
     ],
     features: [
@@ -215,6 +221,7 @@ export const products: Product[] = [
   // ===== PRODUCT 6: Premium Reserve =====
   {
     id: 6,
+    slug: "wafers",
     name: "Wafers from HOVA",
     image: product6_1,
     images: [product6_1, product6_2, product6_3, product6_4],
@@ -225,9 +232,9 @@ export const products: Product[] = [
     specifications: [
       { label: "Weight", value: "600g" },
       { label: "Pieces per Box", value: "30 pieces" },
-      { label: "Cocoa Content", value: "75-85%" },
+      { label: "Delivery Time", value: "1-2 Days" },
       { label: "Origin", value: "Belgium" },
-      { label: "Shelf Life", value: "18 months" },
+      { label: "Delivery Charge", value: "Free Delivery" },
       { label: "Storage", value: "Cool, dry place (15-18°C)" },
     ],
     features: [
@@ -241,8 +248,7 @@ export const products: Product[] = [
   },
 ];
 
-// Helper function to get product by ID
-export const getProductById = (id: number | string): Product | undefined => {
-  const productId = typeof id === "string" ? parseInt(id, 10) : id;
-  return products.find((product) => product.id === productId);
+// Helper function to get product by slug (or numeric ID for backwards compatibility)
+export const getProductBySlug = (slug: string): Product | undefined => {
+  return products.find((product) => product.slug === slug);
 };
