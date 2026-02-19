@@ -19,17 +19,17 @@ import product1_8 from "../assets/Classic/eighth.jpeg";
 import product2_1 from "../assets/Pink1/first.jpg";
 import product2_2 from "../assets/Pink1/second.jpg";
 import product2_3 from "../assets/Pink1/third.mp4";
-import product2_4 from "../assets/Pink1/fourth.png";
-import product2_5 from "../assets/Pink1/fifth.png";
-import product2_6 from "../assets/Pink1/sixth.png";
+import product2_4 from "../assets/Pink1/fourth.jpeg";
+import product2_5 from "../assets/Pink1/fifth.jpeg";
+import product2_6 from "../assets/Pink1/sixth.jpeg";
 
 //===========================================================================
 
-import product3_1 from "../assets/CrispyCheese/first.png";
+import product3_1 from "../assets/CrispyCheese/first.jpeg";
 import product3_2 from "../assets/CrispyCheese/second.jpg";
 import product3_3 from "../assets/CrispyCheese/third.jpg";
-import product3_4 from "../assets/CrispyCheese/fourth.png";
-import product3_5 from "../assets/CrispyCheese/fifth.png";
+import product3_4 from "../assets/CrispyCheese/fourth.jpeg";
+import product3_5 from "../assets/CrispyCheese/fifth.jpeg";
 import product3_6 from "../assets/CrispyCheese/movie.mp4";
 
 //===========================================================================
@@ -79,9 +79,19 @@ export const products: Product[] = [
     slug: "classic-box",
     name: "The Classic Box from HOVA",
     image: product1_1,
-    images: [product1_1, product1_2, product1_3, product1_4, product1_5, product1_6, product1_7, product1_8],
+    images: [
+      product1_1,
+      product1_2,
+      product1_3,
+      product1_4,
+      product1_5,
+      product1_6,
+      product1_7,
+      product1_8,
+    ],
     price: 40,
-    shortDescription: "A refined selection of 35 handcrafted chocolates, thoughtfully composed to offer variety, balance, and depth.",
+    shortDescription:
+      "A refined selection of 35 handcrafted chocolates, thoughtfully composed to offer variety, balance, and depth.",
     fullDescription:
       "Each set includes five distinct flavors, with seven pieces of each, designed to create a complete tasting experience. Flavors include:\n\nCoffee Filling (Choco Spresso)\nA bold, rich coffee filling with a smooth finish and a subtle sense of freshness.\n\nSalted Caramel Filling\nSoft, balanced caramel with a gentle touch of salt for a refined contrast.\n\nCaramel Pecan Filling\nSmooth caramel paired with lightly crisp pecans, offering warmth and texture in every bite.\n\nGianduja Filling\nA harmonious blend of hazelnut and pistachio, layered and elegant.\n\nPistachio Cream Filling\nRich and velvety, crafted for a deeply satisfying finish.\n\nEvery piece in the Classic Box is carefully made to reflect HOVA's attention to detail and commitment to quality.\nPerfect as a gift — or as a personal indulgence — this box is designed to turn any moment into a piece of joy.",
     specifications: [
@@ -108,9 +118,17 @@ export const products: Product[] = [
     slug: "caramel-pecan",
     name: "Caramel Pecan from HOVA",
     image: product2_1,
-    images: [product2_1, product2_2, product2_3, product2_4, product2_5, product2_6],
+    images: [
+      product2_1,
+      product2_2,
+      product2_3,
+      product2_4,
+      product2_5,
+      product2_6,
+    ],
     price: 34,
-    shortDescription: "A smooth caramel center engulfed in authentic Belgian chocolate, finished with roasted pecans.",
+    shortDescription:
+      "A smooth caramel center engulfed in authentic Belgian chocolate, finished with roasted pecans.",
     fullDescription:
       "Sweet caramel, rich Belgian chocolate, and lightly salted pecans are layered in a perfect harmony.",
     specifications: [
@@ -137,9 +155,17 @@ export const products: Product[] = [
     slug: "crispy-cheese",
     name: "Crispy Cheese from HOVA",
     image: product3_1,
-    images: [product3_1, product3_2, product3_3, product3_4, product3_5, product3_6],
+    images: [
+      product3_1,
+      product3_2,
+      product3_3,
+      product3_4,
+      product3_5,
+      product3_6,
+    ],
     price: 28,
-    shortDescription: "A refined combination of a smooth mascarpone filling wrapped in a light, crispy exterior.",
+    shortDescription:
+      "A refined combination of a smooth mascarpone filling wrapped in a light, crispy exterior.",
     fullDescription:
       "Each piece is carefully crafted to deliver a perfect balance between creamy richness and delicate crunch.",
     specifications: [
@@ -168,7 +194,8 @@ export const products: Product[] = [
     image: product4_1,
     images: [product4_1, product4_2, product4_3, product4_4],
     price: 28,
-    shortDescription: "Savor the rich crunch of premium pistachios enveloped in silk-smooth, creamy artisanal chocolate.",
+    shortDescription:
+      "Savor the rich crunch of premium pistachios enveloped in silk-smooth, creamy artisanal chocolate.",
     fullDescription:
       "This elegantly boxed collection is the ultimate masterclass in buttery, nutty decadence.",
     specifications: [
@@ -197,7 +224,8 @@ export const products: Product[] = [
     image: product5_1,
     images: [product5_1, product5_2, product5_3],
     price: 36,
-    shortDescription: "Experience the buttery snap of toasted pecans and salted caramel croquant, perfectly balanced within smooth, premium chocolate. ",
+    shortDescription:
+      "Experience the buttery snap of toasted pecans and salted caramel croquant, perfectly balanced within smooth, premium chocolate. ",
     fullDescription:
       "Presented in our iconic pink box, it’s a chic, textured indulgence that tastes even better than it looks.",
     specifications: [
@@ -226,7 +254,8 @@ export const products: Product[] = [
     image: product6_1,
     images: [product6_1, product6_2, product6_3, product6_4],
     price: 40,
-    shortDescription: "Wrapped in a striking crimson case, these artisanal wafers feature delicate, airy layers enveloped in smooth, high-end chocolate.",
+    shortDescription:
+      "Wrapped in a striking crimson case, these artisanal wafers feature delicate, airy layers enveloped in smooth, high-end chocolate.",
     fullDescription:
       "It is a masterclass in texture, offering a refined snap that feels every bit as luxurious as its elegant presentation.",
     specifications: [
