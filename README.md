@@ -1,73 +1,37 @@
-# React + TypeScript + Vite
+# HOVA Website v2 — hovalb.com
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Redesigned luxury chocolate site: React 18 + Vite + Tailwind CSS + Framer Motion + Three.js (react-three-fiber).
 
-Currently, two official plugins are available:
+## Run locally
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev        # dev server
+npm run build      # production build → dist/
+npm run preview    # serve the production build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Deploy (Vercel)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+The old site is already on Vercel. From this folder: `npx vercel --prod`
+(or push to a GitHub repo and import it in the Vercel dashboard).
+Because it's a SPA with the `/product/:slug` route, add a rewrite — create `vercel.json`:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```json
+{ "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }] }
 ```
+
+## Key facts
+
+- **WhatsApp ordering**: all CTAs use `wa.me/96179088963` (the old site was missing
+  the 961 country code — orders were going nowhere). Number lives in
+  `src/data/products.js` (`WHATSAPP_NUMBER`).
+- **Contact form** opens WhatsApp with the composed message (the old EmailJS
+  integration had placeholder credentials and never sent anything).
+- **3D**: `src/components/GiftBox3D.jsx` is the procedural gift box used by the
+  hero (`Hero3D.jsx`) and the per-product 360° viewer (`ProductViewer3D.jsx`).
+  Box colors per product come from `boxStyle` in `src/data/products.js`.
+- **Higgsfield slot**: `HERO_VIDEO` in `src/pages/Home.jsx` — set it to a
+  generated cinematic loop to replace the static hero backdrop.
+- Products, prices, specs: `src/data/products.js`. Images: `public/assets/`.
+- Analytics: the original Google Analytics tag + Meta Pixel are kept in `index.html`.

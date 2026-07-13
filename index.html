@@ -1,44 +1,61 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230a0a0a'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='16' fill='%23c9a557' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E" />
+    <title>HOVA — Luxury Belgian Chocolates | Piece of Joy</title>
+    <meta name="description" content="HOVA — handcrafted Belgian chocolates in Lebanon. Premium gift boxes, caramel pecan, pistachio cream and more. Free delivery in 1-2 days. Order on WhatsApp." />
+    <meta property="og:title" content="HOVA — Luxury Belgian Chocolates" />
+    <meta property="og:description" content="Handcrafted Belgian chocolates. Piece of Joy. Free delivery across Lebanon." />
+    <meta property="og:image" content="https://www.hovalb.com/assets/herobg.jpg" />
+    <meta property="og:type" content="website" />
 
-<head>
-  <meta charset="UTF-8" />
-  <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HOVA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet" />
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-99CSPSF3TQ"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-99CSPSF3TQ');
-  </script>
+    <!-- Kick off the hero box-video download before the JS bundle even loads;
+         Home.jsx consumes this promise instead of re-fetching. Biggest win on
+         phones, where waiting for the full page load added seconds. -->
+    <script>
+      (function () {
+        if (location.pathname !== '/') return;
+        var mobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) ||
+          (navigator.maxTouchPoints > 1 && /Mac/.test(navigator.userAgent));
+        var src = mobile ? '/assets/box-open-m.mp4' : '/assets/box-open.mp4';
+        window.__boxVideo = { src: src, blob: fetch(src).then(function (r) { return r.blob(); }) };
+      })();
+    </script>
 
-  <!-- Meta Pixel Code -->
-  <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '2000803273985033');
-    fbq('track', 'PageView');
-  </script>
-  <!-- End Meta Pixel Code -->
-</head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-99CSPSF3TQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-99CSPSF3TQ');
+    </script>
 
-<body>
-  <!-- Meta Pixel noscript fallback -->
-  <noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=2000803273985033&ev=PageView&noscript=1"
-  /></noscript>
-  <div id="root"></div>
-  <script type="module" src="/src/main.tsx"></script>
-</body>
-
+    <!-- Meta Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '2000803273985033');
+      fbq('track', 'PageView');
+    </script>
+  </head>
+  <body>
+    <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=2000803273985033&ev=PageView&noscript=1"
+    /></noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
