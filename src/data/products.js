@@ -1,6 +1,6 @@
-// Central place for business info. The live site used wa.me/79088963 (missing
+// Central place for business info. The live site used wa.me/79084179 (missing
 // Lebanon's country code) — WhatsApp requires full international format.
-export const WHATSAPP_NUMBER = '96179088963'
+export const WHATSAPP_NUMBER = '96179084179'
 export const WHATSAPP_DEFAULT_MESSAGE = "Hello! I'm interested in your chocolate products."
 
 export const openWhatsApp = (message = WHATSAPP_DEFAULT_MESSAGE) => {
@@ -155,7 +155,7 @@ Perfect as a gift — or as a personal indulgence — this box is designed to tu
   {
     id: 5,
     slug: 'caramel-pecan-pink',
-    name: 'Caramel Pecan — Pink Edition',
+    name: 'Croquan Caramel Pecan',
     brandName: 'Caramel Pecan from HOVA',
     accent: '#e8a0b4',
     boxStyle: { base: '#f2c7d3', lid: '#eab6c6', ribbon: '#ffffff', label: 'HOVA' },
